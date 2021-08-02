@@ -4,18 +4,18 @@ Quest 1 : Building a bank with Solidity that isn’t a toy; For beginners
 Subquest 1 – Intro
 Welcome to the Solidity Joyride Quest. In this quest you will learn all about the basics of developing applications on Ethereum. We don’t require you to have any background on Ethereum development. If you’re a developer in any programming language and you’ve heard the terms Ethereum, Blockchain, Crypto Currencies etc. you should be good.
 
-In this quest we’ll be developing a Personal Bank Account using Ethereum – where you can deposit money and earn interest. Guess what, this won’t be a toy product that won’t work in the real world. It will be something you can start deploying in the real world directly. You will quickly see how Ethereum & Solidity are so much easier to develop applications that involve transacting real money – unlike any traditional programming language you’d have seen. Solidity has some constructs and data structures built into it that makes building financial applications simple and secure. By the end of this quest you’ll be able to deploy a bank that can start transacting real money. 
+In this quest we’ll be developing a Personal Bank Account using Ethereum – where you can deposit money and earn interest. Guess what, this won’t be a toy product that won’t work in the real world. It will be something you can start deploying in the real world directly. You will quickly see how Ethereum & Solidity are so much easier to develop applications that involve transacting real money – unlike any traditional programming language you’d have seen. Solidity has some constructs and data structures built-in that makes building financial applications simple and secure. By the end of this quest you’ll be able to deploy a bank that can start transacting real money. 
 
-Banks are some of the most sophisticated softwares to build because of how much security is needed. Using solidity, you’ll be able to write a secure bank that is as secure as the most secure bank on the planet with less than 30 lines of code.
+Banks are sophisticated softwares to build because of how much security is needed. Using solidity, you’ll be able to write a secure bank that is as secure as the most secure bank on the planet with less than 30 lines of code.
 
 Ethereum is the underlying blockchain infrastructure, and Solidity is a programming language to write applications. 
 
-At the end of this quest you’ll know how to build contracts that are almost as good as contracts written by projects like PoolTogether and Compound – which are multi billion dollar projects right now.
+At the end of this quest you’ll know how to build contracts that are similar to contracts written by projects like PoolTogether and Compound, which are multi billion dollar projects right now.
 
 Subquest 2 – Remix
 https://remix.ethereum.org
 
-We will be writing all our code in a new IDE called Remix. It sucks, but it’s the best editor for Solidity available out of the box. It is a browser based IDE, so you don’t have to install any software to get started.
+We will be writing all our code in a new IDE called Remix. It’s the best editor for Solidity available out of the box. It is a browser based IDE, so you don’t have to install any software to get started.
 
 Remix is a code editor for Solidity. It also runs a toy blockchain that we’ll be using to deploy our first contract. Most of the steps are automated in Remix. In a later Quest, we’ll install all the components by hand to understand better what is happening under the hood.
 
@@ -24,11 +24,11 @@ https://remix.ethereum.org/#version=soljson-v0.8.4+commit.c7e474f2.js&optimize=f
 
 This is the first contract. 
 
-Also notice the first line “pragma”. This is basically a way to tell remix which version of solidity to use. Most programming languages encourage this, but aren’t required. But in solidity, it is required – because, the development of solidity is so fast that a new version is released almost every week and things keep breaking. To be sure, the solidity compiler version should be mentioned on the top of the file.
+Also notice the first line `pragma`. This is a way to tell remix which version of solidity to use. Most programming languages encourage this, but aren’t required. But in solidity, it is required because the development of solidity is so fast that a new version is released almost every week and things keep breaking. To be sure, the solidity compiler version should be mentioned on the top of the file.
 
-The next thing you’d notice is the keyword contract. Programs on solidity are called contracts. A contract keyword is exactly similar to the class keyword you would have encountered on js/py/java.
+The next thing you’d notice is the keyword `contract`. Programs on solidity are called contracts. A contract keyword is exactly similar to the class keyword you would have encountered on js/py/java.
 
-Lastly , the function that we’ve written in this class aka contract is to get account balance. It returns a uint – a slightly different syntax here. 
+Lastly, the function that we’ve written in this class (aka contract) gets the account balance. It returns a uint. 
 
 This is one place where Solidity shines. A class can accept and store money natively – without having to integrate payment gateways like stripe or razorpay. 
 
@@ -37,7 +37,7 @@ Every user and every program on Ethereum has an account. An account is identifie
 We’ve not sent any money to our contract (aka program’s) account yet. But in the next few subquests, you’ll see how we can write the logic to receive money and use those funds to build a smart bank account. 
 
 Subquest 4 – Compile, Deploy, Contract Address
-Unlike JS/Py, solidity code needs to be compiled before it can be deployed or run. On the left bar, look for the compile button and hit “compile 1.sol”.
+Unlike JS/Py, solidity code needs to be compiled before it can be deployed or run. On the left bar, look for the compile button and hit `Compile subquest3.sol`.
 
 You might see some warnings, but that’s OK for now.
 
@@ -51,7 +51,7 @@ I want you to notice that the account you’ve selected has 100Eth in it. This i
 
 Then, hit deploy.
 
-Ethereum is a computer owned by everyone. Anyone can run code on that computer. We have to deploy code to be able to run on Ethereum. Anyone in the world can start calling the functions you’ve written in your code immediately. You can even charge people for the same. Remix has an inbuilt toy version of Ethereum. Which is where we will be deploying first.
+Ethereum is a computer owned by everyone. Anyone can run code on that computer. We have to deploy code to be able to run on Ethereum. Anyone in the world can start calling the functions you’ve written in your code immediately. You can even charge people for the same. Remix has an inbuilt toy version of Ethereum(JavaScript VM Environment), which is where we will be deploying first.
 
 Now that you’ve deployed it, you’ll be able to start calling the functions.
 
@@ -78,7 +78,7 @@ That’s exactly what this function does here.
 
 Let’s compile and deploy this.
 
-Once it’s deployed tap on add balance, give an address, here’s a sample address for you 0x89Ce0f71D7387a580c6C07032f74f393a65d77F4 and a value say 1,000,000 to the call and hit transact. 
+Once it’s deployed tap on add balance, give an address, here’s a sample address for you 0x89Ce0f71D7387a580c6C07032f74f393a65d77F4 and a value say 1000000 to the call and hit transact. 
 
 After doing that tap the button getContractBalance. You’ll notice the output says 1M. But where did this balance come from? Did we just pull out a Million dollars from thin air? If money has come into this account, it must have gotten deducted from somewhere else, right?
 
@@ -142,9 +142,9 @@ https://remix.ethereum.org/#version=soljson-v0.8.4+commit.c7e474f2.js&optimize=f
 
 When withdrawing, we not only want to give the money back, we also want to add some interest.
 
-So we need to store when the deposit was made along with how much. For that we’ll introduce a new mapping called deposit timestamp.
+We need to store when the deposit was made along with how much. For that, we’ll introduce a new mapping called deposit timestamp.
 
-Now timestamps are tricky in solidity. There is no such thing as current timestamp. That is because, the functions you call on Ethereum/solidity aren’t executed immediately. They are batched into a few thousands. Once there are a few thousand functioncalls called transactions are registered, all of them are run together. This batch of function calls is called a block. The block in blockchain. A block is nothing but a set of all transactions that were a part of this batch. So we only get the timestamp of when the entire batch was run. i.e. block.timestamp = when were all the transactions in this block executed. That is why it takes between 10-20 seconds for a transaction to be completed on the real blockchain. Since we are using a toy blockchain, it appears to execute immediately.
+Timestamps are tricky in solidity. There is no such thing as current timestamp. That is because the functions you call on Ethereum/solidity aren’t executed immediately. They are batched into thousands. Once there are a few thousand functioncalls called, transactions are registered and all of them are run together. This batch of function calls is called a block. The block in blockchain. A block is a set of all transactions that were a part of this batch. So we only get the timestamp of when the entire batch was run. i.e. block.timestamp = when were all the transactions in this block executed. That is why it takes between 10-20 seconds for a transaction to be completed on the real blockchain. Since we are using a toy blockchain, it appears to execute immediately.
 
 Now that we have the timestamp stored of when the transaction was made to deposit money, we’ll add a function called getBalance. Here, the user address can be a parameter because we’ll let anyone look up any other person’s balance – but only the actual owner of the balance can withdraw it.
 
@@ -200,13 +200,13 @@ This is as good as any project out there that are generating billions of dollars
 Subquest 9 – wait, what just happened?
 You just successfully wrote code that runs on Ethereum. But how is it any different from running a python program on my desktop?
 
-Ofcourse in this primer, we’ve abstracted out a lot of jargons so that we can get to the crux of the matter. To build resilient smart contracts, it is important to understand what is really happening and understand some of the jargons.
+Of course in this primer, we’ve abstracted out a lot of jargon so that we can get to the crux of the matter. To build resilient smart contracts, it is important to understand what is really happening and understand some of the jargons.
 
-Ethereum is a world computer. Everyone is running code on this single computer. Anyone can connect their laptop to this world computer and add a CPU to it, and make it even more powerful. There are hundreds of thousands of computers that contribute their processing power to this world computer. Each of these computers are called miner nodes. 
+Ethereum is a world computer. Everyone is running code on this single computer. Anyone can connect their laptop to this world computer and add a CPU to it, and make it even more powerful. There are hundreds of thousands of computers that contribute their processing power to this world computer. Each of these computers are called miner nodes. Note, on ethereum 2.0, miners are replace by validators in the change from proof of work to proof of stake.
 
-If you remember, it costed us some ethers to deploy a contract or call a function in our contract. That is because these miner nodes need to pay for electricity to keep their computers always on and connected to the world computer. This money we’re paying for running our code is called gas and it is paid in Ethers (or wei).
+If you remember, it cost us some ethers to deploy a contract or call a function in our contract. That is because these miner nodes need to pay for electricity to keep their computers always on and connected to the world computer. This money we’re paying for running our code is called gas and it is paid for in Ethers (or wei).
 
-In the next quest we’ll explore more into these details and deploy what you’ve built so that you can start sharing the contract you’ve made with your friends 😊
+In the next quest, we’ll explore more of these details and deploy what you’ve built so that you can start sharing the contract you’ve made with your friends 😊
 
 Thank you for making it all the way to the end. Before moving on to the next quest, it’d be really helpful if you could give us your feedback here, please?
 
